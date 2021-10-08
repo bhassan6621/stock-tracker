@@ -10,6 +10,17 @@ function SearchBar(props) {
       <input
         type="text"
         id="header-search"
+        onKeyDown={(e) => {
+          // key 13 is the enter button.
+          // === is strictly equal, it checks the value and type
+          if (e.keyCode === 13) {
+            // prevents it from re-rendering
+            //because its in a form, the default will
+            // reload when something is submitted.
+            e.preventDefault();
+            props.searchStock(e.target.value);
+          }
+        }}
         placeholder="TSLA"
       />
       <button type="button" onClick={props.handlingSubmit}>
@@ -63,7 +74,7 @@ function Stock() {
   return (
     <div>
       <h1>Stock Market</h1>
-      <SearchBar handlingSubmit={handleSubmit} />
+      <SearchBar handlingSubmit={handleSubmit} searchStock={setSearch} />
       <Plot
         data={[
           {
