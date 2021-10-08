@@ -10,13 +10,6 @@ function SearchBar(props) {
       <input
         type="text"
         id="header-search"
-        onKeyDown={(e) => {
-          // key 13 is the enter button.
-          // === is strictly equal, it checks the value and type
-          if (e.keyCode === 13) {
-            props.searchStock(e.target.value);
-          }
-        }}
         placeholder="TSLA"
       />
       <button type="button" onClick={props.handlingSubmit}>
